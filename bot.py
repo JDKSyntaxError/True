@@ -586,15 +586,4 @@ async def unmute(ctx, member : discord.Member):
                     
         await ctx.send(embed=embed)
 
-@client.command()
-async def update(ctx):
-    staff = get(ctx.guild.roles, name="🐱‍💻Staff")
-    embed = Embed(color=discord.Color.gold())
-    embed.add_field(name="**🟠True Update - V. 1.0.1🟠**",
-                    value="New definitions in Version 1.0.1\n🟡COMMAND UPDATE**\nAdd two new commands for server management (Staff only)\n**t! mute @username time(EX. 120) reason**\n**t!unmute @username**. The following two commands must be used according to the syntax described.**")
-    embed.set_footer(text=f"TimeStamp: {datetime.datetime.now()}")
-    
-    await ctx.send(embed=embed)
-    await ctx.send(f"{staff.mention}")
-
 client.run(token)
