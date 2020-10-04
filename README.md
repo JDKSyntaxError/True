@@ -12,4 +12,4 @@ True is able to monitor the inputs and outputs in the server,.
 Ban, Kick, Bug & User report. Lots of features to avoid the server collapse. Report system for Users and Bugs, in order to have an easy management.
 
 # INVITE TRUE IN YOUR SERVER!
-[🤖Invite True in your discord server]()
+[🤖Invite True in your discord server](https://discord.com/api/oauth2/authorize?client_id=758205623401447476&permissions=8&scope=bot)
