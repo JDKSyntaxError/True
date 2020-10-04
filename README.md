@@ -13,3 +13,4 @@ Ban, Kick, Bug & User report. Lots of features to avoid the server collapse. Rep
 
 # INVITE TRUE IN YOUR SERVER!
 [🤖Invite True in your discord server](https://discord.com/api/oauth2/authorize?client_id=758205623401447476&permissions=8&scope=bot)
+[🚩Join the support server!](https://discord.gg/bXTMz9T)
