@@ -1,5 +1,6 @@
 import discord
-import datetime
+import os
+import time
 from discord.ext import commands
 from discord import Embed, Color
 from discord.utils import get
@@ -41,7 +42,7 @@ async def on_guild_join(guild):
     embed = Embed(color=discord.Color.orange())
     embed.add_field(name="✅ True BOT Is Now Online",
                     value="True is Working into your server.\n\n💢BOT Prefix: **t!**\n🔴**If you need help with the bot, type _t!help_**\n\n💎Best Moderation for your server.\n✅Ban\n✅Kick\n✅Users Info\n\nNo More:\n❌Link Spamming\n❌Hackers\n❌Fake Accounts \n\n[💠Vote for me](https://top.gg/758205623401447476)\nTrue has been designed for greater use by the server staff; Most commands need the **🐱‍💻Staff** role from the author of the message. not to avoid mistakes, we recommend assigning this role to all the staff members of the server.\n\nIf you want to know something about True, use the command **t!how_to**.")
-    embed.set_footer(text=f"Made by Sal Code\nGitHub: https://bit.ly/32us8mR\nYouTube: https://bit.ly/2CqHjmn\nTwitter: https://bit.ly/399ucC0\nInstagram: https://bit.ly/2CkayYa\nDiscord: https://bit.ly/32UqhHF\nPatreon: https://bit.ly/3eJEJF0\nTimeStamp: {datetime.datetime.now()}")
+    embed.set_footer(text=f"Made by Sal Code\nGitHub: https://bit.ly/32us8mR\nYouTube: https://bit.ly/2CqHjmn\nTwitter: https://bit.ly/399ucC0\nInstagram: https://bit.ly/2CkayYa\nDiscord: https://bit.ly/32UqhHF\nPatreon: https://bit.ly/3eJEJF0\nTimeStamp: {time.ctime()}")
 
     await channel.send(embed=embed)
     Staff = await guild.create_role(name="🐱‍💻Staff", color=discord.Color.red())
@@ -74,40 +75,47 @@ async def on_guild_join(guild):
     await guild.create_text_channel("💢log-in", overwrites=login)
     await guild.create_text_channel("💢log-out", overwrites=logout)
 
-@client.event
-async def on_command_error(ctx, error):
-    staff = get(ctx.guild.roles, name="🐱‍💻Staff")
-    embed = Embed(color=discord.Color.red())
-    embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAD",
-                    value=f"We're sorry {ctx.author.mention}. The command you're trying to use doesn't exists. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-    embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+#@client.event
+#async def on_command_error(ctx, error):
+    #staff = get(ctx.guild.roles, name="🐱‍💻Staff")
+    #embed = Embed(color=discord.Color.red())
+    #embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAD",
+                    #value=f"We're sorry {ctx.author.mention}. The command you're trying to use doesn't exists. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
+    #embed.set_footer(text=f"Timestamp: {time.ctime()}")
     
-    await ctx.send(embed=embed)
+    #await ctx.send(embed=embed)
 
 @client.event
 async def on_member_join(ctx):
-    channel = get(ctx.guild.channels, name="💢log-in")
-    member_count = len(ctx.guild.members)
+    try:
+        channel = get(ctx.guild.channels, name="💢log-in")
+        member_count = len(ctx.guild.members)
 
-    embed = Embed(color=discord.Color.green())
-    embed.add_field(name="💢LOG IN MESSAGE",
-                    value=f"{ctx.mention} has joined the server.\nTotal number of members: {member_count}")
-    embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed = Embed(color=discord.Color.green())
+        embed.add_field(name="💢LOG IN MESSAGE",
+                        value=f"{ctx.mention} has joined the server.\nTotal number of members: {member_count}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
+        
+        await channel.send(embed=embed)
     
-    await channel.send(embed=embed)
+    except:
+        return None
 
 @client.event
 async def on_member_remove(ctx):
-    channel = get(ctx.guild.channels, name="💢log-out")
-    member_count = len(ctx.guild.members)
+    try:
+        channel = get(ctx.guild.channels, name="💢log-out")
+        member_count = len(ctx.guild.members)
 
-    embed = Embed(color=discord.Color.red())
-    embed.add_field(name="💢LOG OUT MESSAGE",
-                    value=f"{ctx.mention} has left the server.\nTotal number of members: {member_count}")
-    embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
-    
-    await channel.send(embed=embed)
-            
+        embed = Embed(color=discord.Color.red())
+        embed.add_field(name="💢LOG OUT MESSAGE",
+                        value=f"{ctx.mention} has left the server.\nTotal number of members: {member_count}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
+        
+        await channel.send(embed=embed)
+
+    except:
+        return None    
 
 # Commands
 
@@ -129,7 +137,7 @@ async def helpstaff(ctx):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -140,7 +148,7 @@ async def help(ctx):
     embed = Embed(color=discord.Color.green())
     embed.add_field(name="📒True Help Window",
                     value="🟠Commands: If you want to see **True** commands: **t!cmd**\n🚩If you need support, use the **t!ticket** command. I will create a new channel called **ticket-yourname**. In that channel you can chat with the staff & discuss about your problem.\n⛔If you find any bug/problem, you can report it at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-    embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+    embed.set_footer(text=f"Timestamp: {time.ctime()}")
 
     await ctx.author.dm_channel.send(embed=embed)
 
@@ -153,7 +161,7 @@ async def verify(ctx):
         embed = Embed(color=discord.Color.blue())
         embed.add_field(name=f"USER {ctx.author.mention} VERIFIED CORRECTLY",
                         value=f"The user {ctx.author.mention} has been correctly verified. Now you can access to all the server features.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
         await ctx.send(embed=embed)
     
@@ -162,7 +170,7 @@ async def verify(ctx):
         embed = Embed(color=discord.Color.red())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAD",
                         value=f"We're sorry {ctx.author.mention}. The command you're trying to use doesn't exists. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
         await ctx.send(embed=embed)
 
@@ -177,7 +185,7 @@ async def clear(ctx, amount=1000000):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -191,7 +199,7 @@ async def ban(ctx, member: discord.Member, *, reason):
                     color=discord.Color.red())
         e18.add_field(name='**❌USER BANNED❌**',
                     value=f'A USER HAS BEEN BANNED FROM THE SERVER.\n**BAN AUTHOR**: **{ctx.author.mention}**\n**MOTIVATION**: {reason}\n**BANNED USER**: {member.mention}')
-        e18.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        e18.set_footer(text=f"Timestamp: {time.ctime()}")
         await ctx.send(embed=e18)
     
     except:
@@ -199,7 +207,7 @@ async def ban(ctx, member: discord.Member, *, reason):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -213,7 +221,7 @@ async def kick(ctx, member: discord.Member, *, reason):
                     color=discord.Color.dark_blue())
         e19.add_field(name='**❌USER KICCKED❌**',
                     value=f'A USER HAS BEEN KICCKED FROM THE SERVER.\n**KICK AUTHOR**: **{ctx.author.mention}**\n**MOTIVATION**: {reason}\n**KICCKED USER**: {member.mention}')
-        e19.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        e19.set_footer(text=f"Timestamp: {time.ctime()}")
         await ctx.send(embed=e19)
     
     except:
@@ -221,7 +229,7 @@ async def kick(ctx, member: discord.Member, *, reason):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -255,7 +263,7 @@ async def close(ctx, member : discord.Member, ticket_r):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -264,7 +272,7 @@ async def bugreport(ctx, *, bug):
     e9 = Embed(color=discord.Color.red())
     e9.add_field(name=f'🔻**BUG REPORT MESSAGE FROM {ctx.author.mention}**🔻',
                  value=f'WE THANK YOU FOR YOUR COLLABORATION {ctx.author.mention}! WE WILL TAKE ACCOUNT OF YOUR REPORT AND FIX THE BUG REPORTED TO US.\nREPORTED BUG: **{bug}**')
-    e9.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+    e9.set_footer(text=f"Timestamp: {time.ctime()}")
     await ctx.send(embed=e9)
 
 
@@ -274,7 +282,7 @@ async def usereport(ctx, user : discord.Member, *, reason):
     e10 = Embed(color=discord.Color.red())
     e10.add_field(name=f'🔻**USER REPORT MESSAGE FROM {ctx.author.mention}**🔻',
                   value=f'The following user will be reported: {user.mention}')
-    e10.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+    e10.set_footer(text=f"Timestamp: {time.ctime()}")
     await ctx.send(embed=e10)
     await ctx.send(f"{staff.mention}")
 
@@ -285,7 +293,7 @@ async def sudo(ctx, member : discord.Member, *, reason):
         embed = Embed(color=discord.Color.red())
         embed.add_field(name=f"⛔**SUDO TO {member.mention}**⛔",
                         value=f"WARNING {member.mention}, you're getting reported by a Staff member. You get a **Sudo**. This means you're doing somwthing wrong. Plese stop.\nSudo's reason: **{reason}**")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
         await ctx.send(embed=embed)
     
@@ -294,7 +302,7 @@ async def sudo(ctx, member : discord.Member, *, reason):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -304,7 +312,7 @@ async def cmd(ctx):
     embed = Embed(color=discord.Color.teal())
     embed.add_field(name="📒True Commands",
                     value=f"1️⃣: **t!help**: If you need help, I can help you to solve your issues!\n2️⃣: **t!ticket**: If you need support from the staff, you can use this command to generate a ticket. A channel with thw name **❗ticket-yourusername** will be created into the server. Only you and the staff can access to this channel.\n3️⃣: **t!usereport**: If you think a user has a wrong behavior, you can report that user by using this command; Syntax: ```python\nt!usereport @user reason\n```\n4️⃣: **t!bugreport**: If you find a bug into the server, you can report it at the staff by using this command; Syntax: ```python\nt!bugreport bug\n```\n5️⃣: **t!verify**: If you're new in the server you need to verify your self.\n6️⃣: **t!how_to**: To see a detailed documentation about True.")
-    embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+    embed.set_footer(text=f"Timestamp: {time.ctime()}")
     
     await ctx.author.dm_channel.send(embed=embed)
 
@@ -313,8 +321,8 @@ async def bot_settings(ctx):
     try:
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="🤖BOT GUILD SETTINGS",
-                        value="Use this command if you want to change the BOT settings in your server. There some options avaible.\n1️⃣: If you don't want the user verification in your server, just type **bot_change1**.\n2️⃣: If you don't want the Staff Log, just type: **bot_change2**\n3️⃣: If you want only the verification, just type **bot_change3**. **Note: \n4️⃣If you want the Staff Log, just type **bot_change4**")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+                        value="Use this command if you want to change the BOT settings in your server. There some options avaible.\n1️⃣: If you don't want the user verification in your server, just type **bot_change1**.\n2️⃣: If you don't want the Staff Log, just type: **bot_change2**\n3️⃣: If you want only the verification, just type **bot_change3**. **Note: \n4️⃣If you want the Staff Log, just type bot_change4**")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
         await ctx.send(embed=embed)
     
@@ -323,7 +331,7 @@ async def bot_settings(ctx):
         embed = Embed(color=discord.Color.red())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAD",
                         value=f"We're sorry {ctx.author.mention}. The command you're trying to use doesn't exists. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
         await ctx.send(embed=embed)
 
@@ -340,7 +348,7 @@ async def bot_change1(ctx):
         embed = Embed(color=discord.Color.green())
         embed.add_field(name="🤖BOT Settings successfully changed",
                         value="The BOT settings have been successfully changed.\nCHANGE: **Deleting Verify system**")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
         await ctx.send(embed=embed)
     
@@ -349,7 +357,7 @@ async def bot_change1(ctx):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -366,7 +374,7 @@ async def bot_change2(ctx):
         embed = Embed(color=discord.Color.green())
         embed.add_field(name="🤖BOT Settings successfully changed",
                         value="The BOT settings have been successfully changed.\nCHANGE: **Deleting Staff Log system**")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
         await ctx.send(embed=embed)
     
@@ -375,7 +383,7 @@ async def bot_change2(ctx):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -398,7 +406,7 @@ async def bot_change3(ctx):
         embed = Embed(color=discord.Color.green())
         embed.add_field(name="🤖BOT Settings successfully changed",
                         value="The BOT settings have been successfully changed.\nCHANGE: **Setting User Verification System**")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
             
         await ctx.send(embed=embed)
     
@@ -407,7 +415,7 @@ async def bot_change3(ctx):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -439,7 +447,7 @@ async def bot_change4(ctx):
         embed = Embed(color=discord.Color.green())
         embed.add_field(name="🤖BOT Settings successfully changed",
                             value="The BOT settings have been successfully changed.\nCHANGE: **Staff Log System**")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                 
         await ctx.send(embed=embed)
     
@@ -448,7 +456,7 @@ async def bot_change4(ctx):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -458,6 +466,7 @@ async def bot_change4(ctx):
 async def bot_reset(ctx):
     try:
         Verified = await ctx.guild.create_role(name="✔Verified", color=discord.Color.green())
+        await ctx.guild.create_role(name="❌mute", color=discord.Color.orange())
         Staff = get(ctx.guild.roles, name="🐱‍💻Staff")
         Mute = get(ctx.guild.roles, name="❌mute")
         
@@ -490,7 +499,7 @@ async def bot_reset(ctx):
         embed = Embed(color=discord.Color.green())
         embed.add_field(name="🤖BOT Settings reset",
                         value="All the BOT settings have been successfully restored.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
         await ctx.send(embed=embed)
     
@@ -499,7 +508,7 @@ async def bot_reset(ctx):
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
 
@@ -536,32 +545,36 @@ async def how_to(ctx):
         embed = Embed(color=discord.Color.red())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAD",
                         value=f"We're sorry {ctx.author.mention}. The command you're trying to use doesn't exists. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
         await ctx.send(embed=embed)
 
 @client.command()
 @commands.has_any_role("🐱‍💻Staff")
-async def mute(ctx, member : discord.Member, time : int, *, reason):
-    try:
-        role = get(ctx.guild.roles, name="❌mute")
-        await member.add_roles(role)
+async def mute(ctx, member : discord.Member, time_mute : int, *, reason):
+    #try:
+    role = get(ctx.guild.roles, name="❌mute")
+    await member.add_roles(role)
 
-        embed = Embed(color=discord.Color.gold())
-        embed.add_field(name="**❌MEMBER MUTED IN THE GUILD**",
-                        value=f"The member {member.mention} has been muted in the guild.\nTime: **{time}** minutes\nReason: **{reason}**.\nStaff member: {ctx.author.mention}",)
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+    embed = Embed(color=discord.Color.gold())
+    embed.add_field(name="**❌MEMBER MUTED IN THE GUILD**",
+                        value=f"The member {member.mention} has been muted in the guild.\nTime: **{time_mute}** minutes\nReason: **{reason}**.\nStaff member: {ctx.author.mention}",)
+    embed.set_footer(text=f"Timestamp: {time.ctime()}")
         
-        await ctx.send(embed=embed)
+    await ctx.send(embed=embed)
+
+    with open("files/log.txt", "w") as f:
+        f.write(f"{ctx.author}:{time_mute}")
+        f.close()
     
-    except:
-        staff = get(ctx.guild.roles, name="🐱‍💻Staff")
-        embed = Embed(color=discord.Color.orange())
-        embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
-                        value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+    #except:
+        #staff = get(ctx.guild.roles, name="🐱‍💻Staff")
+        #embed = Embed(color=discord.Color.orange())
+        #embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
+                        #value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
+        #embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
-        await ctx.send(embed=embed)
+        #await ctx.send(embed=embed)
 
 @client.command()
 @commands.has_any_role("🐱‍💻Staff")
@@ -571,19 +584,35 @@ async def unmute(ctx, member : discord.Member):
         await member.remove_roles(role)
 
         embed = Embed(color=discord.Color.purple())
-        embed.add_field(name="**❌MEMBER MUTED IN THE GUILD**",
-                        value=f"The member {member.mention} has been unmuted in the guild.\nStaff member: {ctx.author.mention}",)
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
-        
+        embed.add_field(name="**❌MEMBER UNMUTED IN THE GUILD**",
+                            value=f"The member {member.mention} has been unmuted in the guild.\nStaff member: {ctx.author.mention}",)
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
+            
         await ctx.send(embed=embed)
+
+        f = open('files/log.txt', 'r+')
+        f.truncate(0)
+        f.close()
     
     except:
         staff = get(ctx.guild.roles, name="🐱‍💻Staff")
         embed = Embed(color=discord.Color.orange())
         embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAND",
                         value=f"We're sorry {ctx.author.mention}. If see this message, it knows that you don't have the necessary permissions to use this command. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-        embed.set_footer(text=f"Timestamp: {datetime.datetime.now()}")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}")
                     
         await ctx.send(embed=embed)
+
+@client.command()
+async def load(ctx, extension):
+    client.load_extension(f"cogs.{extension}")
+
+@client.command()
+async def unload(ctx, extension):
+    client.unload_extension(f"cogs.{extension}")
+
+for file in os.listdir("./cogs"):
+    if file.endswith(".py"):
+        client.load_extension(f"cogs.{file[:-3]}")
 
 client.run(token)
