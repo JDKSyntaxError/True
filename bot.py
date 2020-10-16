@@ -75,15 +75,15 @@ async def on_guild_join(guild):
     await guild.create_text_channel("💢log-in", overwrites=login)
     await guild.create_text_channel("💢log-out", overwrites=logout)
 
-#@client.event
-#async def on_command_error(ctx, error):
-    #staff = get(ctx.guild.roles, name="🐱‍💻Staff")
-    #embed = Embed(color=discord.Color.red())
-    #embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAD",
-                    #value=f"We're sorry {ctx.author.mention}. The command you're trying to use doesn't exists. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
-    #embed.set_footer(text=f"Timestamp: {time.ctime()}")
+@client.event
+async def on_command_error(ctx, error):
+    staff = get(ctx.guild.roles, name="🐱‍💻Staff")
+    embed = Embed(color=discord.Color.red())
+    embed.add_field(name="❓ERROR WHILE TRYING USING THE COMMAD",
+                    value=f"We're sorry {ctx.author.mention}. The command you're trying to use doesn't exists. If you think this is an error, please contact the {staff.mention}. If you think this's a BOT error, please report at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
+    embed.set_footer(text=f"Timestamp: {time.ctime()}")
     
-    #await ctx.send(embed=embed)
+    await ctx.send(embed=embed)
 
 @client.event
 async def on_member_join(ctx):
