@@ -44,6 +44,7 @@ toml==0.10.1
 tornado==6.0.4
 traitlets==5.0.4
 tzlocal==2.1
+wavelink==0.9.6
 wcwidth==0.2.5
 websockets==8.1
 wrapt==1.12.1

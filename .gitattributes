@@ -1,0 +1,2 @@
+modules filter=lfs diff=lfs merge=lfs -text
+src.zip filter=lfs diff=lfs merge=lfs -text
