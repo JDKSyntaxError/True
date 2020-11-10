@@ -1,0 +1,3 @@
+© Copiright 2020, Matteo Sala
+
+[True](https://truebot.ml) by [Matteo Sala](https://bit.ly/2CqHjmn) is licensed under [CC BY-NC-SA 4.0CC](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1) <br><br> [<img src="https://chooser-beta.creativecommons.org/img/cc.7a093a7d.svg">](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1) [<img src="https://chooser-beta.creativecommons.org/img/by.f6aa22c4.svg">](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1)[<img src="https://chooser-beta.creativecommons.org/img/nc.8c3b7ea6.svg">](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1)[<img src="https://chooser-beta.creativecommons.org/img/sa.67ddd908.svg">](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1)
