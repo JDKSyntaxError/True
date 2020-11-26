@@ -13,6 +13,7 @@ class Clear(commands.Cog):
         self.client = client
 
     @commands.command(name="clear")
+    @commands.has_permissions(ban_members=True)
     async def clear(self, ctx, amount=1000000):
         await ctx.channel.purge(limit=amount)
 

@@ -18,9 +18,9 @@ class HelpCommand(commands.Cog):
         await ctx.author.create_dm()
         embed = Embed(color=discord.Color.red())
         embed.add_field(name="📒True Help Window - ⚠For Staff Only",
-                        value="🟠Commands: If you want to see **True** commands: **t!cmd**\n✅Verify: When a New member join the server, to be sure that it's not a fake account or a bot, it will be necessary to perform a verification. To do this, you will need to type the command **t!verify** in the appropriate text channel.\n👑**Staff commands**\n🚩**t!ban**: Use this command to ban a user from the guild. Syntax: ```python\nt!ban @username reason\n```\n🚩**t!kick**: USe this command to kick a user from the guild. Syntax: ```python\nt!kick @username reason\n```\n🚩**t!sudo**: Use this command to alert a user that his/her behavior. Syntax: ```python\nt!sudo @username reason\n```\n\n🚩**t!close**: The staff must use the following command to cancel and close a user-generated ticket.\n🚩**t!mute**: Use this command to mute a member in the guild. Syntax: ```python\nt!mute @username time(EX. 120 10) reason\n```.\nTime in the mute command is in minutes.\n🚩**t!unmute**: Use this command to unmute a member in the guild Syntax: ```python\nt!unmute @username\n```.")
+                        value="`ban` `kick` `mute`\n`unmute` `sudo` `warn`\n`tell` `sets` `whois`\n`close` `change[1-2-3-4]` `reset`")
 
-        embed.set_footer(text="Made by Sal Code\nGitHub: https://bit.ly/32us8mR\nYouTube: https://bit.ly/2CqHjmn\nTwitter: https://bit.ly/399ucC0\nInstagram: https://bit.ly/2CkayYa\nDiscord: https://bit.ly/32UqhHF\nPatreon: https://bit.ly/3eJEJF0\n")
+        embed.set_footer(text=f"Timestamp: {time.ctime()}\nInvoked by {ctx.author}", icon_url=ctx.author.avatar_url)
 
         await ctx.author.dm_channel.send(embed=embed)
 
@@ -30,7 +30,7 @@ class HelpCommand(commands.Cog):
         await ctx.author.create_dm()
         embed = Embed(color=discord.Color.green())
         embed.add_field(name="📒True Help Window",
-                        value="🟠Commands: If you want to see **True** commands: **t!cmd**\n🚩If you need support, use the **t!ticket** command. I will create a new channel called **ticket-yourname**. In that channel you can chat with the staff & discuss about your problem.\n⛔If you find any bug/problem, you can report it at: https://forms.gle/sH97ZjbR7opgU9ic6. Thanks for your contribution.")
+                        value="🟠Commands: If you want to see **True** commands: **t!cmd**\n🚩If you need support, use the **t!ticket** command. I will create a new channel called **ticket-yourname**. In that channel you can chat with the staff & discuss about your problem.\n⛔If you find any bug/problem, you can report it at [Our Form](https://forms.gle/sH97ZjbR7opgU9ic6). Thanks for your contribution.\n🌎Visit [Our WebSite](https://truebot.ml)\n🔥[Vote US](https://discord.ly/true)")
         embed.set_footer(text=f"Timestamp: {time.ctime()}\nInvoked by {ctx.author}", icon_url=ctx.author.avatar_url)
 
         await ctx.author.dm_channel.send(embed=embed)
@@ -59,7 +59,7 @@ class HelpCommand(commands.Cog):
         await ctx.author.create_dm()
         embed = Embed(color=discord.Color.teal())
         embed.add_field(name="📒True Commands",
-                        value=f"1️⃣: **t!help**: If you need help, I can help you to solve your issues!\n2️⃣: **t!ticket**: If you need support from the staff, you can use this command to generate a ticket. A channel with thw name **❗ticket-yourusername** will be created into the server. Only you and the staff can access to this channel.\n3️⃣: **t!usereport**: If you think a user has a wrong behavior, you can report that user by using this command; Syntax: ```python\nt!usereport @user reason\n```\n4️⃣: **t!bugreport**: If you find a bug into the server, you can report it at the staff by using this command; Syntax: ```python\nt!bugreport bug\n```\n5️⃣: **t!verify**: If you're new in the server you need to verify your self.\n6️⃣: **t!how_to**: To see a detailed documentation about True.")
+                        value=f"`helpstaff` `help` `verify`\n `whois` `ban` `kick`\n `mute` `unmute` `clear`\n`change1` `change2` `change3`\n`change4` `reset` `ticket`\n`close` `sudo` `bugreport`\n`usereport` `warn`\n`tell` `sets` `show_settings`")
         embed.set_footer(text=f"Timestamp: {time.ctime()}\nInvoked by {ctx.author}", icon_url=ctx.author.avatar_url)
 
         await ctx.author.dm_channel.send(embed=embed)
@@ -67,9 +67,16 @@ class HelpCommand(commands.Cog):
     @commands.command()
     async def how_to(self, ctx):
         true = self.client.get_user(758205623401447476)
-        first_page = Page(color=discord.Color.blue())
+
+        initial = Page(color=discord.Color.red())
+        initial.add_field(name="📚Official Documentation",
+                            value="This command is only a short mode od our documentation.\nTo visit the full documentation, please [Visit Here](https://salazar34.github.io/True)")
+        
+        initial.set_footer(text=f"Timestamp: {time.ctime()}\nInvoked by {ctx.author}", icon_url=ctx.author.avatar_url)
+
+        first_page = Page(color=discord.Color.blue())      
         first_page.add_field(name="📒How to set up True for your guild",
-                            value="By default, True has a set of automatic settings that, when entering the server, are set as default. The first step consists of generating three chats: One for verification and two to manage the inputs and outputs in the server. The second and final phase consists of the creation of two roles, always related to verification and staff. If you want to change the settings, you can do so by accessing the following commands:\n**change1**\n**change2**\n**bot_change3**\n**change4**. If you would like to learn more about the documentation of the following commands, see **settings**.")
+                            value="By default, True has a set of automatic settings that, when entering the server, are set as default. The first step consists of generating three chats: One for verification and two to manage the inputs and outputs in the server. The second and final phase consists of the creation of two roles, always related to verification and staff. If you want to change the settings, you can do so by accessing the following commands:\n**change1**\n**change2**\n**change3**\n**change4**. If you would like to learn more about the documentation of the following commands, see **show_settings**.")
         
         first_page.set_footer(text=f"PAGE 1/5\nTimestamp: {time.ctime()}\nInvoked by {ctx.author}", icon_url=ctx.author.avatar_url)
 
@@ -81,7 +88,7 @@ class HelpCommand(commands.Cog):
 
         third_page = Page(color=discord.Color.orange())
         third_page.add_field(name="📒Log-in / Log Out",
-                            value="Another of True’s default settings is the creation of two chats dedicated to the inputs and outputs in the server. These chats are especially dedicated to the Server Staff. In case you want to delete the above, use the **t command! bot_change2**.")
+                            value="Another of True’s default settings is the creation of two chats dedicated to the inputs and outputs in the server. These chats are especially dedicated to the Server Staff. In case you want to delete the above, use the **t!change2**.")
         
         third_page.set_footer(text=f"PAGE 3/5\nTimestamp: {time.ctime()}\nInvoked by {ctx.author}", icon_url=ctx.author.avatar_url)
 
@@ -95,11 +102,11 @@ class HelpCommand(commands.Cog):
         fifth_page.add_field(name="📒Users commands",
                             value=f"To see all the User's commands, use the command **t!cmd**. {true.mention} will send you all the user commands.")
         
-        fifth_page.set_footer(text=f"PAGE 5/5**\nTimestamp: {time.ctime()}\nInvoked by {ctx.author}", icon_url=ctx.author.avatar_url)
+        fifth_page.set_footer(text=f"PAGE 5/5\nTimestamp: {time.ctime()}\nInvoked by {ctx.author}", icon_url=ctx.author.avatar_url)
 
         menu = PaginatedMenu(ctx)
         menu.add_pages(
-            [first_page, second_page, third_page, fourth_page, fifth_page])
+            [initial, first_page, second_page, third_page, fourth_page, fifth_page])
         await menu.open()
 
 
