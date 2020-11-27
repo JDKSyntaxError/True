@@ -1,5 +1,6 @@
 # True Documentation
 Welcome to the official True BOT documentation. This page has been created by Sal Code, Owner & Developer of True BOT.
+All credits to [Sal Code](https://github.com/Salazar34) and [True Team](https://truebot.ml/about%20us).
 
 ## Commands
 
@@ -29,35 +30,21 @@ Welcome to the official True BOT documentation. This page has been created by Sa
 
 * `t!unmute`: Use this command to un mute a user on the server. This command can be used only by staff members. _Syntax: t!unmute @username_.
 
-## How to contribute - Applying changes
-If you want to apply changes to the actual version of True, you can make this by cloning the source code into your local machine.
+* `t!warn` : Use this command to directly warn a user for an incorrect behavior. The command will automatically sends a DM to the user. _Syntax: t!warn @username text_
 
-#### Cloning the repository into the local machine
-```bash
-    cd workspace
-    git clone https://github.com/Salazar34/True.git
-```
+* `t!ann` : Use this command to make a general announce over the server. _Syntax: t!ann text_
 
-#### Change the documentation
-Before appy changes to the documentation, you need to install an extra module
-```bash
-    pip3 install mkdocs
-```
-After you've correctly installed the module, you can start working on the page.
-```bash
-    cd workspace
-    cd docs
-    cd docs
-```
-When you're here, you can open the file called **index.md** and you can make your changes to the documentation page of the server. To see the live changes to the documentation:
-```bash
-    mkdocs serve
-```
-Copy & Paste the local host adress in your browser.<br />After yoiu've finished your work, delete the **site** folder & then re-create the folder with the new changes; To do this, use the following commands
-```bash
-    rm -r site
-    mkdocs build
-```
+* `t!change1` : The following command remove from the guild the verification system. _Syntax: t!change1_
+
+* `t!change2` : The following command remove the log system from the guild. _Syntax: t!change2_
+
+* `t!change3` : The following command add the verification system to the guild. _Syntax: t!change3_
+
+* `t!change4` : The following command add the log system to the guild. _Syntax: t!change4_
+
+* `t!reset` : The following command reset all the settings in the best way. _Syntax: t!reset_
+
+* `t!sets` : Use the sets command to see if your server is protected or not. It will make a general balance of protection and organization. _Syntax: t!sets_
 
 ## Bug report
-> If you find any bug using True, If you want to contribute to the project, you can report that bug by using the [Google Forms](https://forms.gle/sH97ZjbR7opgU9ic6) or you can join our [Discord server](https://discord.gg/bXTMz9T). We will remember your contribute for our mission.<br />If you have some ideas or suggestions, join our [Discord server](https://discord.gg/bXTMz9T) to express your opinion. Thank You!
+> If you find any bug using True, If you want to contribute to the project, you can report that bug by using the [Google Forms](https://forms.gle/sH97ZjbR7opgU9ic6) or you can join our [Discord server](https://discord.gg/bXTMz9T). We will remember your contribute for our mission.<br />If you have some ideas or suggestions, join our [Discord server](https://discord.gg/bXTMz9T) to express your opinion. Thank You! Visit out [website](https://tuebot.ml/). If you need more and specific support, you can contact us at [support email](support@truebot.ga)
